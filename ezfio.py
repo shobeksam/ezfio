@@ -413,7 +413,7 @@ def RunTest(iops_log, seqrand, wmix, bs, threads, iodepth, runtime):
     cmdline = [fio, "--name=test", "--readwrite=" + str(rw),
                "--rwmixwrite=" + str(wmix), "--bs=" + str(bs),
                "--invalidate=1", "--end_fsync=0", "--group_reporting",
-               "--direct=1", "--filename=" + str(physDrive),
+               "--direct=0", "--filename=" + str(physDrive),
                "--size=" + str(testcapacity) + "G", "--time_based",
                "--runtime=" + str(runtime), "--ioengine=libaio",
                "--numjobs=" + str(threads), "--iodepth=" + str(iodepth),
@@ -476,7 +476,7 @@ def DefineTests():
     """Generate the work list for the main worker into OC."""
     global oc
     # What we're shmoo-ing across
-    bslist = (512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072)
+    bslist = (512)#, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072)
     qdlist = (1, 2, 4, 8, 16, 32, 64, 128, 256)
     threadslist = (1, 2, 4, 8, 16, 32, 64, 128, 256)
     shorttime = 120 # Runtime of point tests
